@@ -1,0 +1,38 @@
+baseurl = "https://0xjoseangel.github.io/blog/"
+languageCode = "en-us"
+title = "José Ángel Carretero Montes"
+googleAnalytics = ""
+disqusShortname = ""
+ignoreFiles = [ "\\.Rmd$", "\\.Rmarkdown$", "_cache$" ]
+footnotereturnlinkcontents = "↩"
+
+[permalinks]
+note = "/note/:year/:month/:day/:slug/"
+post = "/post/:year/:month/:day/:slug/"
+
+[[menu.main]]
+name = "Home"
+url = ""
+weight = 1
+
+[[menu.main]]
+name = "Proyectos"
+url = "proyectos/"
+weight = 2
+
+[params]
+description = "A website built through Hugo and blogdown."
+footer = "&copy; [José Ángel Carretero Montes](https://0xjoseangel.github.io/blog) {Year} | [Github](https://github.com/0xjoseangel) | [Twitter](https://twitter.com/0xjoseangel) | [LinkedIn](https://www.linkedin.com/in/jos%C3%A9-%C3%A1ngel-carretero-montes-476008202/)"
+
+[markup.highlight]
+codeFences = false
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.goldmark.extensions.passthrough]
+enable = true
+
+  [markup.goldmark.extensions.passthrough.delimiters]
+  block = [ [ "\\[", "\\]" ], [ "$$", "$$" ] ]
+  inline = [ [ "\\(", "\\)" ] ]
