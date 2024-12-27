@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on José Ángel Carretero Montes</title>
-    <link>http://localhost:1313/blog/</link>
+    <link>http://localhost:1313/web/</link>
     <description>Recent content in Home on José Ángel Carretero Montes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Proyetos</title>
-      <link>http://localhost:1313/blog/proyectos/</link>
+      <link>http://localhost:1313/web/proyectos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/proyectos/</guid>
+      <guid>http://localhost:1313/web/proyectos/</guid>
       <description>&lt;h3 id=&#34;final-practice&#34;&gt;Final-practice&lt;/h3&gt;&#xA;&lt;p&gt;Práctica final de la asignatura de &lt;strong&gt;Estructura de Datos&lt;/strong&gt;, desarrollada en &lt;strong&gt;C++&lt;/strong&gt;.&lt;br&gt;&#xA;&lt;a href=&#34;https://github.com/0xjoseangel/final-practice&#34;&gt;Repositorio en GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;práctica-1-imágenes&#34;&gt;Práctica-1-Imágenes&lt;/h3&gt;&#xA;&lt;p&gt;Proyecto para la asignatura de &lt;strong&gt;Estructura de Datos&lt;/strong&gt;, enfocado en el procesamiento de imágenes.&lt;br&gt;&#xA;&lt;a href=&#34;https://github.com/0xjoseangel/practica-1-imagenes&#34;&gt;Repositorio en GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;blog&#34;&gt;Blog&lt;/h3&gt;&#xA;&lt;p&gt;Repositorio que contiene el código fuente de mi &lt;strong&gt;blog personal&lt;/strong&gt;, desarrollado en &lt;strong&gt;HTML&lt;/strong&gt;.&lt;br&gt;&#xA;&lt;a href=&#34;https://github.com/0xjoseangel/blog&#34;&gt;Repositorio en GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;nvim&#34;&gt;Nvim&lt;/h3&gt;&#xA;&lt;p&gt;Configuración personalizada para el editor de texto &lt;strong&gt;Neovim&lt;/strong&gt;, utilizando &lt;strong&gt;Lua&lt;/strong&gt;.&lt;br&gt;&#xA;&lt;a href=&#34;https://github.com/0xjoseangel/nvim&#34;&gt;Repositorio en GitHub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;irrgarten-java&#34;&gt;Irrgarten-java&lt;/h3&gt;&#xA;&lt;p&gt;Proyecto en &lt;strong&gt;Java&lt;/strong&gt; relacionado con la generación o resolución de laberintos.&lt;br&gt;&#xA;&lt;a href=&#34;https://github.com/0xjoseangel/irrgarten-java&#34;&gt;Repositorio en GitHub&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>

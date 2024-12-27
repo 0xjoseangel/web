@@ -1,4 +1,4 @@
-baseurl = "https://0xjoseangel.github.io/blog/"
+baseurl = "https://0xjoseangel.github.io/web/"
 languageCode = "en-us"
 title = "José Ángel Carretero Montes"
 googleAnalytics = ""
@@ -22,7 +22,7 @@ weight = 2
 
 [params]
 description = "A website built through Hugo and blogdown."
-footer = "&copy; [José Ángel Carretero Montes](https://0xjoseangel.github.io/blog) {Year} | [Github](https://github.com/0xjoseangel) | [Twitter](https://twitter.com/0xjoseangel) | [LinkedIn](https://www.linkedin.com/in/jos%C3%A9-%C3%A1ngel-carretero-montes-476008202/)"
+footer = "&copy; [José Ángel Carretero Montes](https://0xjoseangel.github.io/web) {Year} | [Github](https://github.com/0xjoseangel) | [Twitter](https://twitter.com/0xjoseangel) | [LinkedIn](https://www.linkedin.com/in/jos%C3%A9-%C3%A1ngel-carretero-montes-476008202/)"
 
 [markup.highlight]
 codeFences = false
