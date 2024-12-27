@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on José Ángel Carretero Montes</title>
+    <link>https://0xjoseangel.github.io/web/</link>
+    <description>Recent content in Home on José Ángel Carretero Montes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://0xjoseangel.github.io/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Proyetos</title>
+      <link>https://0xjoseangel.github.io/web/proyectos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://0xjoseangel.github.io/web/proyectos/</guid>
+      <description>Final-practice Práctica final de la asignatura de Estructura de Datos, desarrollada en C++.
+Repositorio en GitHub
+Práctica-1-Imágenes Proyecto para la asignatura de Estructura de Datos, enfocado en el procesamiento de imágenes.
+Repositorio en GitHub
+Blog Repositorio que contiene el código fuente de mi blog personal, desarrollado en HTML.
+Repositorio en GitHub
+Nvim Configuración personalizada para el editor de texto Neovim, utilizando Lua.
+Repositorio en GitHub
+Irrgarten-java Proyecto en Java relacionado con la generación o resolución de laberintos.</description>
+    </item>
+    
+  </channel>
+</rss>
