@@ -48,7 +48,7 @@ export const siteConfig = {
     {
       school: "Universidad de Granada",
       degree: "Doble grado en Ingeniería Informática + ADE",
-      dateRange: "2021 - Presente",
+      dateRange: "2022 - Presente",
       achievements: [
         "Especialidad en Computación y Sistemas Inteligentes",
       ],

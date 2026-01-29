@@ -1,0 +1,116 @@
+---
+import { siteConfig } from "../config";
+import { fetchContributions, getLevelColor } from "../lib/contributions";
+
+const hasGitHub = siteConfig.github && siteConfig.github.username;
+let weeks: Awaited<ReturnType<typeof fetchContributions>> = [];
+let totalContributions = 0;
+
+if (hasGitHub) {
+  weeks = await fetchContributions(siteConfig.github.username);
+  totalContributions = weeks.reduce(
+    (sum, w) => sum + w.days.reduce((s, d) => s + d.count, 0),
+    0
+  );
+}
+
+const cellSize = 11;
+const cellGap = 3;
+const step = cellSize + cellGap;
+const svgWidth = weeks.length * step;
+const svgHeight = 7 * step;
+
+const months: { label: string; x: number }[] = [];
+let lastMonth = -1;
+const monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
+weeks.forEach((week, wi) => {
+  const firstDay = week.days[0];
+  if (firstDay) {
+    const m = new Date(firstDay.date).getMonth();
+    if (m !== lastMonth) {
+      months.push({ label: monthNames[m], x: wi * step });
+      lastMonth = m;
+    }
+  }
+});
+---
+
+{
+  hasGitHub && weeks.length > 0 && (
+    <section id="contributions" class="p-8 sm:p-12 md:p-16 lg:p-24 reveal">
+      <div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="lg:col-span-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-[var(--color-text-primary)]">
+              Actividad
+            </h2>
+            <div
+              class="w-[75px] h-[5px] mt-2 rounded-full"
+              style={`background-color: ${siteConfig.accentColor}`}
+            />
+            <p class="mt-4 text-sm text-[var(--color-text-muted)]">
+              <span class="text-[var(--color-accent)] font-bold font-['JetBrains_Mono']">{totalContributions.toLocaleString()}</span> contribuciones en el último año
+            </p>
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="bg-[var(--color-bg-card)] rounded-xl border border-[var(--color-border)] p-5 sm:p-6 overflow-x-auto">
+              <!-- Month labels -->
+              <svg
+                width={svgWidth}
+                height={svgHeight + 20}
+                class="min-w-full"
+                style={`min-width: ${svgWidth}px`}
+              >
+                {months.map((m) => (
+                  <text
+                    x={m.x}
+                    y={10}
+                    fill="var(--color-text-muted)"
+                    font-size="10"
+                    font-family="'JetBrains Mono', monospace"
+                  >
+                    {m.label}
+                  </text>
+                ))}
+
+                {weeks.map((week, wi) =>
+                  week.days.map((day) => {
+                    const dayOfWeek = new Date(day.date).getDay();
+                    return (
+                      <rect
+                        x={wi * step}
+                        y={dayOfWeek * step + 18}
+                        width={cellSize}
+                        height={cellSize}
+                        rx={2}
+                        fill={getLevelColor(day.level)}
+                        stroke={day.level === 0 ? "var(--color-border)" : "none"}
+                        stroke-width={day.level === 0 ? "0.5" : "0"}
+                      >
+                        <title>{day.date}: {day.count} contribución{day.count !== 1 ? "es" : ""}</title>
+                      </rect>
+                    );
+                  })
+                )}
+              </svg>
+
+              <!-- Legend -->
+              <div class="flex items-center justify-end gap-2 mt-4 text-xs text-[var(--color-text-muted)]">
+                <span>Menos</span>
+                {[0, 1, 2, 3, 4].map((level) => (
+                  <div
+                    class="w-[11px] h-[11px] rounded-sm"
+                    style={`background-color: ${getLevelColor(level)}; ${level === 0 ? "border: 0.5px solid var(--color-border);" : ""}`}
+                  />
+                ))}
+                <span>Más</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
