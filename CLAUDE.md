@@ -4,14 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a modern, minimalist portfolio template built with Astro and Tailwind CSS v4. It's designed to be easily customizable through a single configuration file while maintaining a clean, professional appearance.
+Portfolio personal de José Ángel Carretero Montes. Dark mode con estética terminal, integración con GitHub API y CV generado en LaTeX.
 
 ## Tech Stack
 
-- **Astro**: Static site generator
-- **Tailwind CSS v4**: Utility-first CSS framework using the new @tailwindcss/vite plugin
-- **TypeScript**: For type-safe configuration
-- **Tabler Icons**: Icon library
+- **Astro**: Generador de sitios estáticos
+- **Tailwind CSS v4**: Framework CSS utility-first con plugin Vite
+- **TypeScript**: Configuración type-safe
+- **marked**: Renderizado de Markdown (READMEs en modal)
+- **LaTeX**: Generación del CV en PDF
 
 ## Development Commands
 
@@ -23,42 +24,47 @@ npm run preview   # Preview production build
 
 ## Architecture
 
-The project follows a component-based architecture with all customization centralized in `src/config.ts`:
+Arquitectura basada en componentes con configuración centralizada en `src/config.ts`:
 
-- **Components** (`src/components/`): Individual Astro components for each section (Hero, About, Projects, Experience, Education, Header, Footer)
-- **Main Layout** (`src/pages/index.astro`): Single-page layout that imports all components
-- **Configuration** (`src/config.ts`): Single source of truth for all content and customization
+- **Components** (`src/components/`): Hero, About, Projects, GitHubRepos, Experience, Education, Header, Footer
+- **Main Layout** (`src/pages/index.astro`): Layout single-page que importa todos los componentes
+- **Configuration** (`src/config.ts`): Fuente única de contenido y personalización
+- **GitHub API** (`src/lib/github.ts`): Fetch de repos y READMEs en build time
+- **CV** (`cv/cv.tex`): CV en LaTeX, compilado a `public/cv.pdf`
 
 ### Key Architectural Decisions
 
-1. **Single Configuration File**: All content is managed through `src/config.ts` to make customization simple
-2. **Conditional Rendering**: Sections automatically hide if their data is removed from the config
-3. **Component Independence**: Each section is a self-contained component that reads from the config
-4. **Accent Color System**: Single `accentColor` in config propagates throughout the site via CSS custom properties
+1. **Single Configuration File**: Todo el contenido se gestiona desde `src/config.ts`
+2. **Conditional Rendering**: Las secciones se ocultan si no hay datos en el config
+3. **Component Independence**: Cada sección es un componente autocontenido
+4. **Dark Mode**: Variables CSS en `global.css` para el tema oscuro
+5. **GitHub Integration**: Repos se obtienen de la API en build time (SSG)
+6. **CV en LaTeX**: Se compila en CI/CD y se sirve como PDF estático
 
 ## Important Implementation Details
 
-- The site uses Tailwind CSS v4 with the Vite plugin configuration
-- No linting or testing framework is currently configured
-- All components are in `.astro` format (not React/Vue/etc)
-- The project uses IBM Plex Mono font loaded from Google Fonts
-- Social links in the config are all optional and will conditionally render
+- Tailwind CSS v4 con plugin Vite
+- Dos fuentes: IBM Plex Mono (body) y JetBrains Mono (elementos terminal)
+- Accent color: `#00ff9f` (verde terminal)
+- Scroll reveal con IntersectionObserver
+- Modal compartido para READMEs (Projects y GitHubRepos)
+- Deploy en GitHub Pages con GitHub Actions
 
 ## Working with Components
 
-When modifying components:
-1. Components read directly from the imported `siteConfig` object
-2. Use Tailwind utility classes for styling
-3. Maintain the existing monospace font aesthetic
-4. Use Tabler Icons for consistency with existing icons
+1. Los componentes leen directamente de `siteConfig`
+2. Usar clases Tailwind con variables CSS (`var(--color-*)`)
+3. Mantener la estética dark mode / terminal
+4. Iconos inline SVG (Tabler Icons)
 
 ## Configuration Structure
 
-The `src/config.ts` exports a `siteConfig` object with these sections:
+`src/config.ts` exporta `siteConfig` con:
 - Basic info: name, title, description, accentColor
-- Social links: email, linkedin, twitter, github (all optional)
+- Social links: email, linkedin, twitter, github (opcionales)
+- github: { username, maxRepos }
+- cv: { enabled, pdfPath }
 - aboutMe: string
 - skills: string[]
 - projects: array of {name, description, link, skills}
-- experience: array of {company, title, dateRange, bullets}
 - education: array of {school, degree, dateRange, achievements}

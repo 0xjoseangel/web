@@ -1,5 +1,5 @@
 {
-  "name": "devportfolio",
+  "name": "portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,6 +11,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.3",
+    "marked": "^17.0.1",
     "tailwindcss": "^4.1.11"
   }
 }

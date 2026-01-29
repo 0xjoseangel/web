@@ -1,48 +1,56 @@
 export const siteConfig = {
   name: "José Ángel Carretero Montes",
-  title: "Estudiante de Ingeniería Informática + ADE",
-  description: "Portfolio de José Ángel Carretero Montes",
-  accentColor: "#1d4ed8",
+  title: "Ingeniería Informática & ADE | Data Science",
+  description: "Portfolio de José Ángel Carretero Montes — Ingeniería Informática y ADE, Universidad de Granada",
+  accentColor: "#00ff9f",
   social: {
     email: "joseangelcarretero300@gmail.com",
     linkedin: "https://www.linkedin.com/in/jos%C3%A9-%C3%A1ngel-carretero-montes-476008202/",
     twitter: "https://x.com/0xjoseangel",
     github: "https://github.com/0xjoseangel",
   },
+  github: {
+    username: "0xjoseangel",
+    maxRepos: 6,
+  },
+  cv: {
+    enabled: true,
+    pdfPath: "/web/cv.pdf",
+  },
   aboutMe:
-    "¡Hola! Tengo 20 años y soy estudiante de cuarto año del doble grado en Ingeniería Informática (E. Computación y Sistemas Inteligentes) y Administración y Dirección de Empresas en la Universidad de Granada. Mi pasión por la tecnología y los negocios me ha llevado a combinar ambos campos para obtener una formación integral y orientada al futuro. Estoy interesado en especializarme en Ciencia de Datos, aplicando técnicas avanzadas para resolver problemas en el ámbito bancario y empresarial. Mi objetivo es cursar un máster en Ciencia de Datos en la Universidad de Granada, donde profundizaré en la aplicación de modelos analíticos y algoritmos para tomar decisiones basadas en datos y optimizar procesos en estos sectores clave.",
-  skills: ["C++", "C", "Ansible", "Python", "Java", "Docker", "Ruby", "Linux", "Bash"],
+    "Estudiante de cuarto año del doble grado en Ingeniería Informática (Computación y Sistemas Inteligentes) y ADE en la Universidad de Granada. Me especializo en Ciencia de Datos y algoritmos de inteligencia artificial, con experiencia en desarrollo full-stack, automatización de infraestructura y sistemas distribuidos. Busco aplicar modelos analíticos y técnicas de machine learning a problemas reales en el ámbito financiero y empresarial.",
+  skills: ["C++", "C", "Python", "Java", "JavaScript", "Docker", "Ansible", "Ruby", "Linux", "Bash", "Django", "React"],
   projects: [
     {
-      name: "Practica Final: Rutas Aéreas (colaboración con @jesurod)",
+      name: "Casino Online",
       description:
-        "Desarrollamos un software para ayudar a compañías aéreas a visualizar sus rutas sobre los países que atraviesan. La aplicación permite asignar códigos a rutas y muestra en un mapa del mundo las secuencias de países que atraviesa. En pantalla, se presenta una lista de países relevantes, y las banderas de estos se muestran en la ruta. Además, la aplicación marca la ruta con secuencias de aviones.",
-      link: "https://github.com/0xjoseangel/Final-practice",
-      skills: ["C++", "CMake"],
+        "Plataforma de casino online con arquitectura headless. Backend en Django con base de datos Oracle y frontend en React + Vite. Incluye gestión de usuarios, catálogo de juegos, sistema de transacciones, torneos y control de sesiones.",
+      link: "https://github.com/0xjoseangel/Casino",
+      skills: ["JavaScript", "React", "Django", "Python", "Oracle"],
     },
     {
-      name: "Irrgarten",
+      name: "Danger Theory — Detección de Crisis Financieras",
       description:
-        "Irrgarten es un juego de aventura y estrategia en el que los jugadores deben escapar de un laberinto lleno de obstáculos, monstruos y peligros. En este juego, varios jugadores competirán por llegar a la salida del laberinto primero, mientras sortean trampas y combaten monstruos. ¡Solo el jugador más astuto y fuerte logrará escapar! Este proyecto fue parte de la asignatura PDOO.",
-      link: "https://github.com/0xjoseangel/Irrgarten-java",
-      skills: ["Java"],
+        "Aplicación de la Teoría del Peligro para detectar crisis cambiarias mediante algoritmos evolutivos inspirados en inmunología biológica. Incluye paper académico, libro interactivo y pipeline de análisis de datos económicos.",
+      link: "https://github.com/0xjoseangel/DANGER-THEORY-DT-",
+      skills: ["Python", "Jupyter", "Data Science"],
     },
     {
-      name: "Agentes reactivos y deliberativos",
+      name: "Agentes Reactivos y Deliberativos",
       description:
-        "Práctica realizada para la asignatura de Inteligencia Artificial de la Universidad de Granada, mi trabajo se limita al comportamiento de los agentes, el entorno fue dado por los profesores de la asignatura.",
+        "Implementación de agentes inteligentes con comportamiento reactivo y deliberativo para navegación autónoma en entornos simulados. Desarrollo de la lógica de decisión y planificación de los agentes.",
       link: "https://github.com/0xjoseangel/practica2IA",
-      skills: ["C++"],
+      skills: ["C++", "IA"],
     },
   ],
-  
+
   education: [
     {
       school: "Universidad de Granada",
       degree: "Doble grado en Ingeniería Informática + ADE",
-      dateRange: "2021 - Ahora",
+      dateRange: "2021 - Presente",
       achievements: [
-        
+        "Especialidad en Computación y Sistemas Inteligentes",
       ],
     },
   ],

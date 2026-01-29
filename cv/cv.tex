@@ -1,0 +1,86 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+
+% Colors
+\definecolor{accent}{HTML}{00FF9F}
+\definecolor{darkbg}{HTML}{0A0A0F}
+\definecolor{lighttext}{HTML}{A1A1AA}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=accent,
+  urlcolor=accent
+}
+
+% Formatting
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}
+  {\large\bfseries\uppercase}
+  {}
+  {0pt}
+  {}
+  [\titlerule]
+
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+\begin{document}
+
+% Header
+\begin{center}
+  {\LARGE\bfseries José Ángel Carretero Montes}\\[6pt]
+  {\normalsize Ingeniería Informática \& ADE $\mid$ Data Science}\\[8pt]
+  \small
+  \faEnvelope\ \href{mailto:joseangelcarretero300@gmail.com}{joseangelcarretero300@gmail.com} \quad
+  \faLinkedin\ \href{https://www.linkedin.com/in/jos\%C3\%A9-\%C3\%A1ngel-carretero-montes-476008202/}{LinkedIn} \quad
+  \faGithub\ \href{https://github.com/0xjoseangel}{0xjoseangel} \quad
+  \faTwitter\ \href{https://x.com/0xjoseangel}{@0xjoseangel}
+\end{center}
+
+% Profile
+\section{Perfil}
+Estudiante de cuarto año del doble grado en Ingeniería Informática (Computación y Sistemas Inteligentes) y ADE en la Universidad de Granada. Especializado en Ciencia de Datos y algoritmos de inteligencia artificial, con experiencia en desarrollo full-stack, automatización de infraestructura y sistemas distribuidos. Orientado a la aplicación de modelos analíticos y técnicas de machine learning en el ámbito financiero y empresarial.
+
+% Skills
+\section{Habilidades Técnicas}
+\textbf{Lenguajes:} C++, C, Python, Java, JavaScript, Ruby, Bash \\
+\textbf{Frameworks:} Django, React, Vite \\
+\textbf{Infraestructura:} Docker, Ansible, Linux, Git, Oracle \\
+\textbf{Data Science:} Jupyter, Pandas, NumPy, Matplotlib
+
+% Education
+\section{Educación}
+\textbf{Doble grado en Ingeniería Informática + ADE} \hfill 2021 -- Presente \\
+\textit{Universidad de Granada} \\
+Especialidad en Computación y Sistemas Inteligentes
+
+% Projects
+\section{Proyectos}
+
+\textbf{Casino Online} \hfill \href{https://github.com/0xjoseangel/Casino}{\faGithub\ GitHub} \\
+\textit{JavaScript, React, Django, Python, Oracle} \\
+Plataforma de casino online con arquitectura headless. Backend en Django con base de datos Oracle y frontend en React + Vite. Incluye gestión de usuarios, catálogo de juegos, sistema de transacciones, torneos y control de sesiones.
+
+\vspace{6pt}
+
+\textbf{Danger Theory --- Detección de Crisis Financieras} \hfill \href{https://github.com/0xjoseangel/DANGER-THEORY-DT-}{\faGithub\ GitHub} \\
+\textit{Python, Jupyter, Data Science} \\
+Aplicación de la Teoría del Peligro para detectar crisis cambiarias mediante algoritmos evolutivos inspirados en inmunología biológica. Incluye paper académico, libro interactivo y pipeline de análisis de datos económicos.
+
+\vspace{6pt}
+
+\textbf{Agentes Reactivos y Deliberativos} \hfill \href{https://github.com/0xjoseangel/practica2IA}{\faGithub\ GitHub} \\
+\textit{C++, Inteligencia Artificial} \\
+Implementación de agentes inteligentes con comportamiento reactivo y deliberativo para navegación autónoma en entornos simulados. Desarrollo de la lógica de decisión y planificación de los agentes.
+
+\end{document}

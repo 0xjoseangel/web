@@ -2,20 +2,24 @@
 import { siteConfig } from "../config";
 
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
-const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
+const hasExperience = (siteConfig as any).experience && (siteConfig as any).experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const hasGitHub = siteConfig.github && siteConfig.github.username;
 ---
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
-  <nav class="max-w-7xl mx-auto px-8 py-4">
-    <ul class="flex items-center gap-8 justify-center">
+  <nav class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
+    <a href="#hero" class="text-[var(--color-accent)] font-bold text-lg font-['JetBrains_Mono'] hidden md:block">
+      ~/portfolio
+    </a>
+    <ul class="flex items-center gap-6 lg:gap-8 mx-auto md:mx-0">
       <li>
         <a
           href="#about"
-          class="text-gray-700 hover:text-black transition-colors font-medium"
+          class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
         >
           Sobre Mí
         </a>
@@ -25,9 +29,21 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           <li>
             <a
               href="#projects"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
             >
               Proyectos
+            </a>
+          </li>
+        )
+      }
+      {
+        hasGitHub && (
+          <li>
+            <a
+              href="#github"
+              class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
+            >
+              GitHub
             </a>
           </li>
         )
@@ -37,7 +53,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           <li>
             <a
               href="#experience"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
             >
               Experiencia
             </a>
@@ -49,7 +65,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           <li>
             <a
               href="#education"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
             >
               Educación
             </a>
@@ -57,6 +73,22 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         )
       }
     </ul>
+    {
+      siteConfig.cv?.enabled && (
+        <a
+          href={siteConfig.cv.pdfPath}
+          download
+          class="hidden md:flex items-center gap-2 px-4 py-2 border border-[var(--color-accent)] text-[var(--color-accent)] rounded-lg text-sm font-medium hover:bg-[var(--color-accent)] hover:text-[var(--color-bg-primary)] transition-all duration-300"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          CV
+        </a>
+      )
+    }
   </nav>
 </header>
 
@@ -64,15 +96,32 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
     if (window.scrollY > 100) {
-      header?.classList.add("bg-white/80", "backdrop-blur-sm");
+      header?.classList.add("bg-[#0a0a0f]/80", "backdrop-blur-md", "border-b", "border-[#2a2a3a]/50");
     } else {
-      header?.classList.remove("bg-white/80", "backdrop-blur-sm");
+      header?.classList.remove("bg-[#0a0a0f]/80", "backdrop-blur-md", "border-b", "border-[#2a2a3a]/50");
     }
   });
-</script>
 
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+  // Active section indicator
+  const sections = document.querySelectorAll("section[id], div[id='hero']");
+  const navLinks = document.querySelectorAll("header a[href^='#']");
+
+  const observerNav = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach((link) => {
+            link.classList.remove("text-[var(--color-accent)]");
+            if (link.getAttribute("href") === `#${id}`) {
+              link.classList.add("text-[var(--color-accent)]");
+            }
+          });
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  sections.forEach((section) => observerNav.observe(section));
+</script>
