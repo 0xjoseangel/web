@@ -1,10 +1,23 @@
 ---
 import { siteConfig } from "../config";
+import { content } from "../content";
+import { useTranslations, getAltLangPath, languages, type Lang } from "../i18n/ui";
 
-const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
-const hasExperience = (siteConfig as any).experience && (siteConfig as any).experience.length > 0;
-const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+const t = useTranslations(lang);
+const c = content[lang];
+
+const hasProjects = c.projects && c.projects.length > 0;
+const hasExperience = c.experience && c.experience.length > 0;
+const hasEducation = c.education && c.education.length > 0;
 const hasGitHub = siteConfig.github && siteConfig.github.username;
+
+const altLang: Lang = lang === "es" ? "en" : "es";
+const altPath = getAltLangPath(lang);
 ---
 
 <header
@@ -21,7 +34,7 @@ const hasGitHub = siteConfig.github && siteConfig.github.username;
           href="#about"
           class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
         >
-          Sobre Mí
+          {t("nav.about")}
         </a>
       </li>
       {
@@ -31,7 +44,7 @@ const hasGitHub = siteConfig.github && siteConfig.github.username;
               href="#projects"
               class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
             >
-              Proyectos
+              {t("nav.projects")}
             </a>
           </li>
         )
@@ -43,7 +56,7 @@ const hasGitHub = siteConfig.github && siteConfig.github.username;
               href="#github"
               class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
             >
-              GitHub
+              {t("nav.github")}
             </a>
           </li>
         )
@@ -55,7 +68,7 @@ const hasGitHub = siteConfig.github && siteConfig.github.username;
               href="#experience"
               class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
             >
-              Experiencia
+              {t("nav.experience")}
             </a>
           </li>
         )
@@ -67,12 +80,25 @@ const hasGitHub = siteConfig.github && siteConfig.github.username;
               href="#education"
               class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium text-sm"
             >
-              Educación
+              {t("nav.education")}
             </a>
           </li>
         )
       }
     </ul>
+    <a
+      href={altPath}
+      aria-label={t("nav.switchTo")}
+      class="flex items-center gap-1.5 px-3 py-1.5 border border-[var(--color-border)] rounded-lg text-xs font-semibold text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 font-['JetBrains_Mono']"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+        <path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" />
+        <path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" />
+      </svg>
+      {languages[altLang]}
+    </a>
   </nav>
 </header>
 

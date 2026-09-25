@@ -1,6 +1,16 @@
 ---
 import { siteConfig } from "../config";
-const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+import { content } from "../content";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+const t = useTranslations(lang);
+const c = content[lang];
+const hasProjects = c.projects && c.projects.length > 0;
 ---
 
 {
@@ -10,7 +20,7 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
             <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-[var(--color-text-primary)]">
-              Proyectos
+              {t("projects.title")}
             </h2>
             <div
               class="w-[75px] h-[5px] mt-2 rounded-full"
@@ -20,7 +30,7 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 
           <div class="lg:col-span-8">
             <div class="space-y-6">
-              {siteConfig.projects.map((project, index) => {
+              {c.projects.map((project, index) => {
                 const isGitHub = project.link?.includes("github.com");
 
                 return (
@@ -65,7 +75,7 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
                             <button
                               class="readme-btn w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-lg text-[var(--color-text-muted)] transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
                               data-repo-url={project.link}
-                              title="Ver README"
+                              title={t("projects.readme")}
                             >
                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -105,7 +115,7 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 <!-- README Modal -->
 <div id="readme-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
   <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" id="readme-overlay"></div>
-  <div class="relative w-full max-w-3xl max-h-[85vh] bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl overflow-hidden flex flex-col">
+  <div id="readme-modal-inner" class="relative w-full max-w-3xl max-h-[85vh] bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl overflow-hidden flex flex-col" data-loading-text={t("projects.loading")} data-error-text={t("projects.readmeError")}>
     <!-- Modal header -->
     <div class="flex items-center justify-between px-6 py-4 border-b border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
       <div class="flex items-center gap-2">
@@ -123,7 +133,7 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
     <!-- Modal content -->
     <div class="p-6 overflow-y-auto readme-content" id="readme-content">
       <div class="flex items-center justify-center py-12">
-        <div class="text-[var(--color-text-muted)] font-['JetBrains_Mono'] text-sm">Cargando...</div>
+        <div class="text-[var(--color-text-muted)] font-['JetBrains_Mono'] text-sm">{t("projects.loading")}</div>
       </div>
     </div>
   </div>
@@ -173,9 +183,12 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
       const repoUrl = (btn as HTMLElement).dataset.repoUrl;
       if (!repoUrl) return;
 
-      const content = document.getElementById('readme-content');
+      const modalInner = document.getElementById('readme-modal-inner');
+      const loadingText = modalInner?.dataset.loadingText ?? 'Loading...';
+      const errorText = modalInner?.dataset.errorText ?? 'Could not load README.';
+      const contentEl = document.getElementById('readme-content');
       const title = document.getElementById('readme-title');
-      if (content) content.innerHTML = '<div class="flex items-center justify-center py-12"><div class="text-[var(--color-text-muted)] font-[\'JetBrains_Mono\'] text-sm">Cargando...</div></div>';
+      if (contentEl) contentEl.innerHTML = `<div class="flex items-center justify-center py-12"><div class="text-[var(--color-text-muted)] font-['JetBrains_Mono'] text-sm">${loadingText}</div></div>`;
 
       const info = extractGitHubInfo(repoUrl);
       if (title && info) title.textContent = `${info.repo}/README.md`;
@@ -183,11 +196,11 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
       openModal();
 
       const readme = await fetchReadme(repoUrl);
-      if (content) {
+      if (contentEl) {
         if (readme) {
-          content.innerHTML = await marked(readme);
+          contentEl.innerHTML = await marked(readme);
         } else {
-          content.innerHTML = '<p class="text-[var(--color-text-muted)] text-center py-12">No se pudo cargar el README.</p>';
+          contentEl.innerHTML = `<p class="text-[var(--color-text-muted)] text-center py-12">${errorText}</p>`;
         }
       }
     });

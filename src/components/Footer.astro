@@ -1,9 +1,19 @@
 ---
 import { siteConfig } from "../config";
+import { content } from "../content";
+import { useTranslations, type Lang } from "../i18n/ui";
 
-const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
-const hasExperience = (siteConfig as any).experience && (siteConfig as any).experience.length > 0;
-const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+const t = useTranslations(lang);
+const c = content[lang];
+
+const hasProjects = c.projects && c.projects.length > 0;
+const hasExperience = c.experience && c.experience.length > 0;
+const hasEducation = c.education && c.education.length > 0;
 ---
 
 <footer class="relative border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
@@ -14,7 +24,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
           {siteConfig.name}
         </h3>
         <p class="text-sm text-[var(--color-text-muted)]">
-          {siteConfig.title}
+          {c.title}
         </p>
         <div class="flex gap-x-5">
           {
@@ -89,26 +99,26 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
       <div class="hidden md:flex flex-col items-end gap-4">
         <nav class="flex gap-x-6">
           <a href="#about" class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">
-            Sobre Mí
+            {t("nav.about")}
           </a>
           {
             hasProjects && (
               <a href="#projects" class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">
-                Proyectos
+                {t("nav.projects")}
               </a>
             )
           }
           {
             hasExperience && (
               <a href="#experience" class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">
-                Experiencia
+                {t("nav.experience")}
               </a>
             )
           }
           {
             hasEducation && (
               <a href="#education" class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">
-                Educación
+                {t("nav.education")}
               </a>
             )
           }

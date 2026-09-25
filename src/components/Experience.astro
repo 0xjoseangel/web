@@ -1,6 +1,16 @@
 ---
 import { siteConfig } from "../config";
-const hasExperience = (siteConfig as any).experience && (siteConfig as any).experience.length > 0;
+import { content } from "../content";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+const t = useTranslations(lang);
+const c = content[lang];
+const hasExperience = c.experience && c.experience.length > 0;
 ---
 
 {
@@ -10,7 +20,7 @@ const hasExperience = (siteConfig as any).experience && (siteConfig as any).expe
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
             <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-[var(--color-text-primary)]">
-              Experiencia
+              {t("experience.title")}
             </h2>
             <div
               class="w-[75px] h-[5px] mt-2 rounded-full"
@@ -20,14 +30,14 @@ const hasExperience = (siteConfig as any).experience && (siteConfig as any).expe
 
           <div class="lg:col-span-8">
             <div class="relative">
-              {(siteConfig as any).experience.map((exp: any, index: number) => (
+              {c.experience.map((exp: any, index: number) => (
                 <div class="relative mb-12 last:mb-0">
                   <div
                     class="absolute left-1/2 -top-2 w-4 h-4 border-2 rounded-full -translate-x-1/2 z-20"
                     style={`border-color: ${siteConfig.accentColor}; background-color: ${siteConfig.accentColor}`}
                   />
 
-                  {index < (siteConfig as any).experience.length - 1 && (
+                  {index < c.experience.length - 1 && (
                     <div class="absolute left-1/2 bottom-0 w-0.5 h-12 bg-[var(--color-border)] -translate-x-1/2 translate-y-full z-10" />
                   )}
 

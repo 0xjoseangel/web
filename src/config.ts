@@ -1,9 +1,9 @@
+// Datos independientes del idioma. El contenido traducible (título, descripción,
+// aboutMe, skills, proyectos, educación, CV) vive en `content.ts`.
+
 export const siteConfig = {
   name: "José Ángel Carretero Montes",
-  title: "Ingeniería Informática & ADE | Data Science",
-  description: "Portfolio de José Ángel Carretero Montes — Ingeniería Informática y ADE, Universidad de Granada",
   accentColor: "#00ff9f",
-  availability: "Prácticas ahora · Incorporación completa verano 2027",
   social: {
     email: "joseangelcarretero300@gmail.com",
     linkedin: "https://www.linkedin.com/in/jos%C3%A9-%C3%A1ngel-carretero-montes-476008202/",
@@ -14,62 +14,4 @@ export const siteConfig = {
     username: "0xjoseangel",
     maxRepos: 6,
   },
-  cv: {
-    enabled: true,
-    pdfPath: "/cv.pdf",
-  },
-  aboutMe:
-    "Estudiante de quinto año del doble grado en Ingeniería Informática (Computación y Sistemas Inteligentes) y ADE en la Universidad de Granada. Me especializo en Ciencia de Datos y algoritmos de inteligencia artificial, con experiencia en desarrollo full-stack, automatización de infraestructura y sistemas distribuidos. Busco aplicar modelos analíticos y técnicas de machine learning a problemas reales en el ámbito financiero y empresarial.",
-  skills: [
-    {
-      category: "Lenguajes",
-      items: ["C++", "C", "Python", "Java", "JavaScript", "Ruby", "Bash"],
-    },
-    {
-      category: "Frameworks",
-      items: ["Django", "React", "Vite"],
-    },
-    {
-      category: "Infraestructura",
-      items: ["Docker", "Ansible", "Linux", "Oracle"],
-    },
-    {
-      category: "Data Science",
-      items: ["Jupyter", "Pandas", "NumPy", "Matplotlib"],
-    },
-  ],
-  projects: [
-    {
-      name: "Casino Online",
-      description:
-        "Plataforma de casino online con arquitectura headless. Backend en Django con base de datos Oracle y frontend en React + Vite. Incluye gestión de usuarios, catálogo de juegos, sistema de transacciones, torneos y control de sesiones.",
-      link: "https://github.com/0xjoseangel/Casino",
-      skills: ["JavaScript", "React", "Django", "Python", "Oracle"],
-    },
-    {
-      name: "Danger Theory — Detección de Crisis Financieras",
-      description:
-        "Aplicación de la Teoría del Peligro para detectar crisis cambiarias mediante algoritmos evolutivos inspirados en inmunología biológica. Incluye paper académico, libro interactivo y pipeline de análisis de datos económicos.",
-      link: "https://github.com/0xjoseangel/DANGER-THEORY-DT-",
-      skills: ["Python", "Jupyter", "Data Science"],
-    },
-    {
-      name: "Agentes Reactivos y Deliberativos",
-      description:
-        "Implementación de agentes inteligentes con comportamiento reactivo y deliberativo para navegación autónoma en entornos simulados. Desarrollo de la lógica de decisión y planificación de los agentes.",
-      link: "https://github.com/0xjoseangel/practica2IA",
-      skills: ["C++", "IA"],
-    },
-  ],
-
-  education: [
-    {
-      school: "Universidad de Granada",
-      degree: "Doble grado en Ingeniería Informática + ADE",
-      dateRange: "2022 - Presente",
-      achievements: [
-        "Especialidad en Computación y Sistemas Inteligentes",
-      ],
-    },
-  ],
-};
+};        

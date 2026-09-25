@@ -1,0 +1,114 @@
+---
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Projects from "../components/Projects.astro";
+import GitHubRepos from "../components/GitHubRepos.astro";
+import GitHubContributions from "../components/GitHubContributions.astro";
+import Experience from "../components/Experience.astro";
+import Education from "../components/Education.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config";
+import { content } from "../content";
+import type { Lang } from "../i18n/ui";
+import "../styles/global.css";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const c = content[lang];
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={c.description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL("/", Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL("/en/", Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site)} />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:title" content={`${siteConfig.name} — ${c.title}`} />
+    <meta property="og:description" content={c.description} />
+    <meta property="og:image" content={new URL("/og-image.png", Astro.site)} />
+    <meta property="og:locale" content={c.ogLocale} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="twitter:title" content={`${siteConfig.name} — ${c.title}`} />
+    <meta name="twitter:description" content={c.description} />
+    <meta name="twitter:image" content={new URL("/og-image.png", Astro.site)} />
+    {siteConfig.social?.twitter && (
+      <meta name="twitter:creator" content={`@${siteConfig.social.twitter.split("/").pop()}`} />
+    )}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{siteConfig.name} - {c.title}</title>
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: siteConfig.name,
+      description: c.description,
+      jobTitle: c.title,
+      url: Astro.site?.toString(),
+      email: siteConfig.social?.email,
+      sameAs: [
+        siteConfig.social?.linkedin,
+        siteConfig.social?.github,
+        siteConfig.social?.twitter,
+      ].filter(Boolean),
+    })} />
+
+    <noscript>
+      <style>
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body class="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]">
+    <Header lang={lang} />
+    <main>
+      <Hero lang={lang} />
+      <About lang={lang} />
+      <Projects lang={lang} />
+      <GitHubRepos lang={lang} />
+      <GitHubContributions lang={lang} />
+      <Experience lang={lang} />
+      <Education lang={lang} />
+    </main>
+    <Footer lang={lang} />
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

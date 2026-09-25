@@ -1,6 +1,14 @@
 ---
 import { siteConfig } from "../config";
+import { useTranslations, type Lang } from "../i18n/ui";
 import { fetchContributions, getLevelColor } from "../lib/contributions";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+const t = useTranslations(lang);
 
 const hasGitHub = siteConfig.github && siteConfig.github.username;
 let weeks: Awaited<ReturnType<typeof fetchContributions>> = [];
@@ -22,7 +30,7 @@ const svgHeight = 7 * step;
 
 const months: { label: string; x: number }[] = [];
 let lastMonth = -1;
-const monthNames = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+const monthNames = t("contributions.months") as unknown as string[];
 
 weeks.forEach((week, wi) => {
   const firstDay = week.days[0];
@@ -43,14 +51,14 @@ weeks.forEach((week, wi) => {
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
             <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-[var(--color-text-primary)]">
-              Actividad
+              {t("contributions.title")}
             </h2>
             <div
               class="w-[75px] h-[5px] mt-2 rounded-full"
               style={`background-color: ${siteConfig.accentColor}`}
             />
             <p class="mt-4 text-sm text-[var(--color-text-muted)]">
-              <span class="text-[var(--color-accent)] font-bold font-['JetBrains_Mono']">{totalContributions.toLocaleString()}</span> contribuciones en el último año
+              <span class="text-[var(--color-accent)] font-bold font-['JetBrains_Mono']">{totalContributions.toLocaleString()}</span> {t("contributions.suffix")}
             </p>
           </div>
 
@@ -89,7 +97,7 @@ weeks.forEach((week, wi) => {
                         stroke={day.level === 0 ? "var(--color-border)" : "none"}
                         stroke-width={day.level === 0 ? "0.5" : "0"}
                       >
-                        <title>{day.date}: {day.count} contribución{day.count !== 1 ? "es" : ""}</title>
+                        <title>{day.date}: {day.count} {day.count === 1 ? t("contributions.unitSingular") : t("contributions.unitPlural")}</title>
                       </rect>
                     );
                   })
@@ -98,14 +106,14 @@ weeks.forEach((week, wi) => {
 
               <!-- Legend -->
               <div class="flex items-center justify-end gap-2 mt-4 text-xs text-[var(--color-text-muted)]">
-                <span>Menos</span>
+                <span>{t("contributions.less")}</span>
                 {[0, 1, 2, 3, 4].map((level) => (
                   <div
                     class="w-[11px] h-[11px] rounded-sm"
                     style={`background-color: ${getLevelColor(level)}; ${level === 0 ? "border: 0.5px solid var(--color-border);" : ""}`}
                   />
                 ))}
-                <span>Más</span>
+                <span>{t("contributions.more")}</span>
               </div>
             </div>
           </div>

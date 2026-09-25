@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[margin=2cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{setspace}
+\setstretch{1.12}
+
+% Colors
+\definecolor{accent}{HTML}{00FF9F}
+\definecolor{darkbg}{HTML}{0A0A0F}
+\definecolor{lighttext}{HTML}{A1A1AA}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=accent,
+  urlcolor=accent
+}
+
+% Formatting
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}
+  {\large\bfseries\uppercase}
+  {}
+  {0pt}
+  {}
+  [\titlerule]
+
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+
+\begin{document}
+
+% Header
+\begin{center}
+  {\LARGE\bfseries José Ángel Carretero Montes}\\[6pt]
+  {\normalsize Computer Engineering \& Business Administration $\mid$ Data Science}\\[8pt]
+  \footnotesize
+  \faGlobe\ \href{https://joseangelcarretero.dev}{joseangelcarretero.dev} \hspace{6pt}
+  \faEnvelope\ \href{mailto:joseangelcarretero300@gmail.com}{joseangelcarretero300@gmail.com} \hspace{6pt}
+  \faLinkedin\ \href{https://www.linkedin.com/in/jos\%C3\%A9-\%C3\%A1ngel-carretero-montes-476008202/}{LinkedIn} \hspace{6pt}
+  \faGithub\ \href{https://github.com/0xjoseangel}{0xjoseangel} \hspace{6pt}
+  \faTwitter\ \href{https://x.com/0xjoseangel}{X}
+\end{center}
+
+% Profile
+\section{Profile}
+Fifth-year student of the double degree in Computer Engineering (Computation and Intelligent Systems) and Business Administration at the University of Granada. Specialized in Data Science and artificial intelligence algorithms, with experience in full-stack development, infrastructure automation, and distributed systems. Focused on applying analytical models and machine learning techniques in finance and business.
+
+% Skills
+\section{Technical Skills}
+\textbf{Languages:} C++, C, Python, Java, JavaScript, Ruby, Bash \\
+\textbf{Frameworks:} Django, React, Vite \\
+\textbf{Infrastructure:} Docker, Ansible, Linux, Git, Oracle \\
+\textbf{Data Science:} Jupyter, Pandas, NumPy, Matplotlib
+
+% Education
+\section{Education}
+\textbf{Double Degree in Computer Engineering + Business Administration} \hfill 2022 -- Present \\
+\textit{University of Granada} \\
+Specialization in Computation and Intelligent Systems
+
+% Projects
+\section{Projects}
+
+\textbf{Casino Online} \hfill \href{https://github.com/0xjoseangel/Casino}{\faGithub\ GitHub} \\
+\textit{JavaScript, React, Django, Python, Oracle} \\
+Online casino platform with a headless architecture. Django backend with an Oracle database and a React + Vite frontend. Includes user management, game catalog, transaction system, tournaments, and session control.
+
+\vspace{9pt}
+
+\textbf{Danger Theory --- Financial Crisis Detection} \hfill \href{https://github.com/0xjoseangel/DANGER-THEORY-DT-}{\faGithub\ GitHub} \\
+\textit{Python, Jupyter, Data Science} \\
+Application of Danger Theory to detect currency crises using evolutionary algorithms inspired by biological immunology. Includes an academic paper, an interactive book, and an economic data analysis pipeline.
+
+\vspace{9pt}
+
+\textbf{Reactive and Deliberative Agents} \hfill \href{https://github.com/0xjoseangel/practica2IA}{\faGithub\ GitHub} \\
+\textit{C++, Artificial Intelligence} \\
+Implementation of intelligent agents with reactive and deliberative behavior for autonomous navigation in simulated environments. Development of the agents' decision-making and planning logic.
+
+\end{document}

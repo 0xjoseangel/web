@@ -1,5 +1,15 @@
 ---
 import { siteConfig } from "../config";
+import { content } from "../content";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+const t = useTranslations(lang);
+const c = content[lang];
 ---
 
 <div
@@ -50,19 +60,19 @@ import { siteConfig } from "../config";
 
       <div class="mt-6 sm:mt-8 animate-fade-in animation-delay-400">
         <p class="font-['JetBrains_Mono'] text-base sm:text-lg md:text-xl text-[var(--color-text-secondary)]">
-          <span class="text-[var(--color-accent)]">&gt;</span> {siteConfig.title}
+          <span class="text-[var(--color-accent)]">&gt;</span> {c.title}
         </p>
       </div>
 
       {
-        siteConfig.availability && (
+        c.availability && (
           <div class="mt-4 sm:mt-5 animate-fade-in animation-delay-400">
             <span class="inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium text-[var(--color-accent)]">
               <span class="relative flex h-2 w-2">
                 <span class="absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent)] opacity-75 animate-ping" />
                 <span class="relative inline-flex h-2 w-2 rounded-full bg-[var(--color-accent)]" />
               </span>
-              {siteConfig.availability}
+              {c.availability}
             </span>
           </div>
         )
@@ -71,9 +81,9 @@ import { siteConfig } from "../config";
       <!-- CTAs -->
       <div class="mt-8 sm:mt-10 flex flex-wrap gap-4 animate-fade-in animation-delay-400">
         {
-          siteConfig.cv?.enabled && (
+          c.cv?.enabled && (
             <a
-              href={siteConfig.cv.pdfPath}
+              href={c.cv.pdfPath}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 rounded-lg bg-[var(--color-accent)] px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-[var(--color-bg-primary)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,255,159,0.3)]"
@@ -85,7 +95,7 @@ import { siteConfig } from "../config";
                 <path d="M12 17v-6" />
                 <path d="M9.5 14.5l2.5 2.5l2.5 -2.5" />
               </svg>
-              Descargar CV
+              {t("hero.cv")}
             </a>
           )
         }
@@ -100,7 +110,7 @@ import { siteConfig } from "../config";
                 <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
                 <path d="M3 7l9 6l9 -6" />
               </svg>
-              Contactar
+              {t("hero.contact")}
             </a>
           )
         }
