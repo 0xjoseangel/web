@@ -1,6 +1,6 @@
 # Portfolio — José Ángel Carretero Montes
 
-**Live:** [https://0xjoseangel.github.io/web/](https://0xjoseangel.github.io/web/)
+**Live:** [https://joseangelcarretero.dev](https://joseangelcarretero.dev)
 
 ## Stack
 
