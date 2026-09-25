@@ -16,9 +16,29 @@ import "../styles/global.css";
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={siteConfig.description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:title" content={`${siteConfig.name} — ${siteConfig.title}`} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:image" content={new URL("/og-image.png", Astro.site)} />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="twitter:title" content={`${siteConfig.name} — ${siteConfig.title}`} />
+    <meta name="twitter:description" content={siteConfig.description} />
+    <meta name="twitter:image" content={new URL("/og-image.png", Astro.site)} />
+    {siteConfig.social?.twitter && (
+      <meta name="twitter:creator" content={`@${siteConfig.social.twitter.split("/").pop()}`} />
+    )}
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,6 +46,28 @@ import "../styles/global.css";
       rel="stylesheet"
     />
     <title>{siteConfig.name} - {siteConfig.title}</title>
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: siteConfig.name,
+      description: siteConfig.description,
+      jobTitle: siteConfig.title,
+      url: Astro.site?.toString(),
+      email: siteConfig.social?.email,
+      sameAs: [
+        siteConfig.social?.linkedin,
+        siteConfig.social?.github,
+        siteConfig.social?.twitter,
+      ].filter(Boolean),
+    })} />
+
+    <noscript>
+      <style>
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
   </head>
   <body class="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]">
     <Header />

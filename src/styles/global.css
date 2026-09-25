@@ -49,6 +49,20 @@ body {
   transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Cursor blink */
 .cursor-blink::after {
   content: '█';

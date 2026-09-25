@@ -3,6 +3,7 @@ export const siteConfig = {
   title: "Ingeniería Informática & ADE | Data Science",
   description: "Portfolio de José Ángel Carretero Montes — Ingeniería Informática y ADE, Universidad de Granada",
   accentColor: "#00ff9f",
+  availability: "Prácticas ahora · Incorporación completa verano 2027",
   social: {
     email: "joseangelcarretero300@gmail.com",
     linkedin: "https://www.linkedin.com/in/jos%C3%A9-%C3%A1ngel-carretero-montes-476008202/",
@@ -19,7 +20,24 @@ export const siteConfig = {
   },
   aboutMe:
     "Estudiante de cuarto año del doble grado en Ingeniería Informática (Computación y Sistemas Inteligentes) y ADE en la Universidad de Granada. Me especializo en Ciencia de Datos y algoritmos de inteligencia artificial, con experiencia en desarrollo full-stack, automatización de infraestructura y sistemas distribuidos. Busco aplicar modelos analíticos y técnicas de machine learning a problemas reales en el ámbito financiero y empresarial.",
-  skills: ["C++", "C", "Python", "Java", "JavaScript", "Docker", "Ansible", "Ruby", "Linux", "Bash", "Django", "React"],
+  skills: [
+    {
+      category: "Lenguajes",
+      items: ["C++", "C", "Python", "Java", "JavaScript", "Ruby", "Bash"],
+    },
+    {
+      category: "Frameworks",
+      items: ["Django", "React", "Vite"],
+    },
+    {
+      category: "Infraestructura",
+      items: ["Docker", "Ansible", "Linux", "Oracle"],
+    },
+    {
+      category: "Data Science",
+      items: ["Jupyter", "Pandas", "NumPy", "Matplotlib"],
+    },
+  ],
   projects: [
     {
       name: "Casino Online",
