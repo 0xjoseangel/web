@@ -140,7 +140,6 @@ const hasProjects = c.projects && c.projects.length > 0;
 </div>
 
 <script>
-  import { marked } from 'marked';
 
   function extractGitHubInfo(url: string) {
     const match = url.match(/github\.com\/([^\/]+)\/([^\/]+)/);
@@ -198,6 +197,7 @@ const hasProjects = c.projects && c.projects.length > 0;
       const readme = await fetchReadme(repoUrl);
       if (contentEl) {
         if (readme) {
+          const { marked } = await import('marked');
           contentEl.innerHTML = await marked(readme);
         } else {
           contentEl.innerHTML = `<p class="text-[var(--color-text-muted)] text-center py-12">${errorText}</p>`;
