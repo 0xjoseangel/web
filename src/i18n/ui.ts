@@ -18,12 +18,14 @@ export const ui = {
 
     "projects.title": "Proyectos",
     "projects.readme": "Ver README",
+    "projects.open": "Abrir",
     "projects.loading": "Cargando...",
     "projects.readmeError": "No se pudo cargar el README.",
 
     "github.title": "GitHub",
     "github.subtitle": "Repositorios públicos destacados",
     "github.readme": "Ver README",
+    "github.open": "Ver en GitHub",
     "github.loading": "Cargando...",
     "github.readmeError": "No se pudo cargar el README.",
 
@@ -53,12 +55,14 @@ export const ui = {
 
     "projects.title": "Projects",
     "projects.readme": "View README",
+    "projects.open": "Open",
     "projects.loading": "Loading...",
     "projects.readmeError": "Couldn't load the README.",
 
     "github.title": "GitHub",
     "github.subtitle": "Featured public repositories",
     "github.readme": "View README",
+    "github.open": "View on GitHub",
     "github.loading": "Loading...",
     "github.readmeError": "Couldn't load the README.",
 
