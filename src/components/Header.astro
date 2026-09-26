@@ -107,9 +107,9 @@ const altPath = getAltLangPath(lang);
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
     if (window.scrollY > 100) {
-      header?.classList.add("bg-[#0a0a0f]/80", "backdrop-blur-md", "border-b", "border-[#2a2a3a]/50");
+      header?.classList.add("bg-[#0a0a0f]/95", "md:bg-[#0a0a0f]/80", "md:backdrop-blur-md", "border-b", "border-[#2a2a3a]/50");
     } else {
-      header?.classList.remove("bg-[#0a0a0f]/80", "backdrop-blur-md", "border-b", "border-[#2a2a3a]/50");
+      header?.classList.remove("bg-[#0a0a0f]/95", "md:bg-[#0a0a0f]/80", "md:backdrop-blur-md", "border-b", "border-[#2a2a3a]/50");
     }
   });
 

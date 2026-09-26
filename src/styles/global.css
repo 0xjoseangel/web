@@ -40,8 +40,8 @@ body {
 /* Scroll reveal animation */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(16px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
 }
 
 .reveal.visible {
@@ -110,14 +110,14 @@ body {
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards;
   opacity: 0;
 }
 
-.animation-delay-200 { animation-delay: 0.2s; }
-.animation-delay-400 { animation-delay: 0.4s; }
-.animation-delay-600 { animation-delay: 0.6s; }
-.animation-delay-800 { animation-delay: 0.8s; }
+.animation-delay-200 { animation-delay: 0.1s; }
+.animation-delay-400 { animation-delay: 0.2s; }
+.animation-delay-600 { animation-delay: 0.3s; }
+.animation-delay-800 { animation-delay: 0.4s; }
 
 /* Stagger animation for cards */
 .stagger-1 { animation-delay: 0.1s; }
