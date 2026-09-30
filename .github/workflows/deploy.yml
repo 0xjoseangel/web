@@ -28,6 +28,9 @@ jobs:
           pdflatex -interaction=nonstopmode cv.tex
           pdflatex -interaction=nonstopmode cv.tex
           cp cv.pdf ../public/cv.pdf
+          pdflatex -interaction=nonstopmode cv-en.tex
+          pdflatex -interaction=nonstopmode cv-en.tex
+          cp cv-en.pdf ../public/cv-en.pdf
 
       - name: Install, build, and upload your site
         uses: withastro/action@v3

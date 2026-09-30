@@ -11,15 +11,16 @@ const { lang = "es" } = Astro.props;
 const t = useTranslations(lang);
 const c = content[lang];
 const hasEducation = c.education && c.education.length > 0;
+const hasCertifications = c.certifications && c.certifications.length > 0;
 ---
 
 {
-  hasEducation && (
+  (hasEducation || hasCertifications) && (
     <section id="education" class="p-8 sm:p-12 md:p-16 lg:p-24 reveal">
       <div>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-[var(--color-text-primary)]">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-bold text-[var(--color-text-primary)]">
               {t("education.title")}
             </h2>
             <div
@@ -32,7 +33,7 @@ const hasEducation = c.education && c.education.length > 0;
             <div class="space-y-6">
               {c.education.map((edu) => (
                 <div class="bg-[var(--color-bg-card)] rounded-xl border border-[var(--color-border)] p-4 sm:p-5 md:p-6 hover:border-[var(--color-accent)]/30 transition-all duration-300">
-                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4 mb-4">
                     <div>
                       <h3 class="text-lg sm:text-xl font-semibold text-[var(--color-text-primary)]">
                         {edu.degree}
@@ -41,7 +42,7 @@ const hasEducation = c.education && c.education.length > 0;
                         {edu.school}
                       </p>
                     </div>
-                    <span class="text-xs sm:text-sm text-[var(--color-text-muted)] mt-2 sm:mt-0 font-['JetBrains_Mono']">
+                    <span class="shrink-0 text-xs sm:text-sm text-[var(--color-text-muted)] mt-2 sm:mt-0 font-['JetBrains_Mono']">
                       {edu.dateRange}
                     </span>
                   </div>
@@ -61,6 +62,62 @@ const hasEducation = c.education && c.education.length > 0;
                 </div>
               ))}
             </div>
+
+            {hasCertifications && (
+              <div id="certifications" class="mt-10 sm:mt-12">
+                <h3 class="mb-4 font-['JetBrains_Mono'] text-base sm:text-lg text-[var(--color-text-primary)]">
+                  <span class="text-[var(--color-text-muted)]">$</span>{" "}<span class="text-[var(--color-accent)]">ls</span>{" "}{t("certifications.title").toLowerCase()}/
+                </h3>
+                <div class={`grid grid-cols-1 gap-4 ${c.certifications.length > 1 ? "md:grid-cols-2" : ""}`}>
+                  {c.certifications.map((cert) => (
+                    <div class="flex flex-col bg-[var(--color-bg-card)] rounded-xl border border-[var(--color-border)] p-4 sm:p-5 hover:border-[var(--color-accent)]/30 transition-all duration-300">
+                      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4 mb-3">
+                        <div>
+                          <h4 class="text-base sm:text-lg font-semibold text-[var(--color-text-primary)]">
+                            {cert.name}
+                          </h4>
+                          <p class="text-sm" style={`color: ${siteConfig.accentColor}`}>
+                            {cert.issuer}
+                          </p>
+                        </div>
+                        <span class="shrink-0 text-xs sm:text-sm text-[var(--color-text-muted)] font-['JetBrains_Mono']">
+                          {cert.date}
+                        </span>
+                      </div>
+
+                      {cert.details.length > 0 && (
+                        <ul class="space-y-1.5">
+                          {cert.details.map((detail) => (
+                            <li class="flex items-start">
+                              <span class="inline-block w-1.5 h-1.5 rounded-full mt-2 mr-3 flex-shrink-0" style={`background-color: ${siteConfig.accentColor}`} />
+                              <span class="text-sm text-[var(--color-text-secondary)]">
+                                {detail}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {cert.link && (
+                        <a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="self-start inline-flex items-center gap-2 mt-4 px-3 py-1.5 border border-[var(--color-border)] rounded-lg text-xs sm:text-sm font-semibold text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 font-['JetBrains_Mono']"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+                            <path d="M9 12l2 2l4 -4" />
+                          </svg>
+                          {t("certifications.verify")}
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

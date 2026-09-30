@@ -70,6 +70,19 @@ export const content = {
         achievements: ["Especialidad en Computación y Sistemas Inteligentes"],
       },
     ],
+
+    certifications: [
+      {
+        name: "Aptis ESOL — Inglés C1",
+        issuer: "British Council",
+        date: "Septiembre 2026",
+        details: [
+          "Nivel global C1 (MCER) · 179/200",
+          "Listening C1 · Reading C1 (50/50) · Speaking B2 · Writing B2",
+        ],
+        link: "https://credentials.britishcouncil.org/28379ba7-48f4-48de-9bec-4a27901aebc4?key=904660ccf4df4f33d680e802a8130aace31f119fae33bb6c3fc9628da4798365",
+      },
+    ],
   },
 
   en: {
@@ -138,6 +151,19 @@ export const content = {
         degree: "Double Degree in Computer Engineering + Business Administration",
         dateRange: "2022 - Present",
         achievements: ["Specialization in Computation and Intelligent Systems"],
+      },
+    ],
+
+    certifications: [
+      {
+        name: "Aptis ESOL — English C1",
+        issuer: "British Council",
+        date: "September 2026",
+        details: [
+          "Overall CEFR level C1 · 179/200",
+          "Listening C1 · Reading C1 (50/50) · Speaking B2 · Writing B2",
+        ],
+        link: "https://credentials.britishcouncil.org/28379ba7-48f4-48de-9bec-4a27901aebc4?key=904660ccf4df4f33d680e802a8130aace31f119fae33bb6c3fc9628da4798365",
       },
     ],
   },

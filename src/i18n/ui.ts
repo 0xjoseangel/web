@@ -39,6 +39,8 @@ export const ui = {
 
     "experience.title": "Experiencia",
     "education.title": "Educación",
+    "certifications.title": "Certificaciones",
+    "certifications.verify": "Verificar credencial",
   },
   en: {
     "nav.about": "About",
@@ -76,6 +78,8 @@ export const ui = {
 
     "experience.title": "Experience",
     "education.title": "Education",
+    "certifications.title": "Certifications",
+    "certifications.verify": "Verify credential",
   },
 } as const;
 
