@@ -38,6 +38,13 @@ export const content = {
 
     projects: [
       {
+        name: "Habla con tu dinero — Asistente Financiero con IA",
+        description:
+          "Asistente financiero conversacional para el reto de la Cátedra Unicaja (UGR): consultas en lenguaje natural sobre tus movimientos con gráficos generados por el LLM, y operaciones (Bizum, inversiones) que el agente solo propone — un paso determinista valida fondos y límites y nada se ejecuta sin tu aprobación. Incluye dashboard proactivo nocturno, memoria de usuario y modo voz 100% local. 86,4% de precisión en consultas y respuesta completa en ~4,2 s (mediana).",
+        link: "https://github.com/0xjoseangel/reto-unicaja",
+        skills: ["Python", "FastAPI", "LangGraph", "React", "Docker"],
+      },
+      {
         name: "Casino Online",
         description:
           "Plataforma de casino online con arquitectura headless. Backend en Django con base de datos Oracle y frontend en React + Vite. Incluye gestión de usuarios, catálogo de juegos, sistema de transacciones, torneos y control de sesiones.",
@@ -50,13 +57,6 @@ export const content = {
           "Aplicación de la Teoría del Peligro para detectar crisis cambiarias mediante algoritmos evolutivos inspirados en inmunología biológica. Incluye paper académico, libro interactivo y pipeline de análisis de datos económicos.",
         link: "https://github.com/0xjoseangel/DANGER-THEORY-DT-",
         skills: ["Python", "Jupyter", "Data Science"],
-      },
-      {
-        name: "Agentes Reactivos y Deliberativos",
-        description:
-          "Implementación de agentes inteligentes con comportamiento reactivo y deliberativo para navegación autónoma en entornos simulados. Desarrollo de la lógica de decisión y planificación de los agentes.",
-        link: "https://github.com/0xjoseangel/practica2IA",
-        skills: ["C++", "IA"],
       },
     ],
 
@@ -121,6 +121,13 @@ export const content = {
 
     projects: [
       {
+        name: "Talk to Your Money — AI Financial Assistant",
+        description:
+          "Conversational financial assistant built for the Cátedra Unicaja challenge (University of Granada): natural-language queries over your bank transactions with LLM-generated charts, and operations (Bizum transfers, investments) that the agent only proposes — a deterministic step checks funds and limits, and nothing runs without your explicit approval. Includes a nightly proactive dashboard, user memory, and a fully local voice mode. 86.4% accuracy on natural-language queries and ~4.2 s median full response time.",
+        link: "https://github.com/0xjoseangel/reto-unicaja",
+        skills: ["Python", "FastAPI", "LangGraph", "React", "Docker"],
+      },
+      {
         name: "Casino Online",
         description:
           "Online casino platform with a headless architecture. Django backend with an Oracle database and a React + Vite frontend. Includes user management, game catalog, transaction system, tournaments, and session control.",
@@ -133,13 +140,6 @@ export const content = {
           "Application of Danger Theory to detect currency crises using evolutionary algorithms inspired by biological immunology. Includes an academic paper, an interactive book, and an economic data analysis pipeline.",
         link: "https://github.com/0xjoseangel/DANGER-THEORY-DT-",
         skills: ["Python", "Jupyter", "Data Science"],
-      },
-      {
-        name: "Reactive and Deliberative Agents",
-        description:
-          "Implementation of intelligent agents with reactive and deliberative behavior for autonomous navigation in simulated environments. Development of the agents' decision-making and planning logic.",
-        link: "https://github.com/0xjoseangel/practica2IA",
-        skills: ["C++", "AI"],
       },
     ],
 
