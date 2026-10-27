@@ -57,7 +57,7 @@ Fifth-year student of the double degree in Computer Engineering (Computation and
 
 % Skills
 \section{Technical Skills}
-\textbf{Languages:} C++, C, Python, Java, JavaScript, Ruby, Bash \\
+\textbf{Languages:} C++, C, Python, SQL, Java, JavaScript, Ruby, Bash \\
 \textbf{Frameworks:} Django, React, Vite \\
 \textbf{Infrastructure:} Docker, Ansible, Linux, Git, Oracle \\
 \textbf{Data Science:} Jupyter, Pandas, NumPy, Matplotlib
@@ -77,19 +77,28 @@ Specialization in Computation and Intelligent Systems
 \section{Projects}
 
 \textbf{Talk to Your Money --- AI Financial Assistant} \hfill \href{https://github.com/0xjoseangel/reto-unicaja}{\faGithub\ GitHub} \\
-\textit{Python, FastAPI, LangGraph, React, Docker} \\
-Conversational financial assistant for the Cátedra Unicaja challenge (University of Granada). Natural-language queries with LLM-generated charts, and operations (Bizum, investments) that only run after deterministic validation and explicit user approval.
+\textit{Python, FastAPI, LangGraph, SQLAlchemy, React, Docker}
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt,parsep=0pt]
+  \item Financial chat (Cátedra Unicaja challenge, UGR): the LLM only proposes operations; they are validated deterministically and never run without human approval.
+  \item No free-form SQL: 18 tools with parameterized SQLAlchemy queries (no SQL injection by design); 56 tests.
+\end{itemize}
 
-\vspace{9pt}
+\vspace{6pt}
 
-\textbf{Casino Online} \hfill \href{https://github.com/0xjoseangel/Casino}{\faGithub\ GitHub} \\
-\textit{JavaScript, React, Django, Python, Oracle} \\
-Online casino platform with a headless architecture. Django backend with an Oracle database and a React + Vite frontend. Includes user management, game catalog, transaction system, tournaments, and session control.
+\textbf{Portfolio Selection with Metaheuristics} \hfill \href{https://github.com/0xjoseangel/portfolio}{\faGithub\ GitHub} \\
+\textit{C++17, OpenMP}
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt,parsep=0pt]
+  \item 14 metaheuristics (ILS, simulated annealing, genetic, memetic\ldots) on the IBEX 35 and S\&P 500 (457 assets), validated out of sample.
+  \item The memetic AM-Best wins on every index; OpenMP-parallelized evaluation.
+\end{itemize}
 
-\vspace{9pt}
+\vspace{6pt}
 
 \textbf{Danger Theory --- Financial Crisis Detection} \hfill \href{https://github.com/0xjoseangel/DANGER-THEORY-DT-}{\faGithub\ GitHub} \\
-\textit{Python, Jupyter, Data Science} \\
-Application of Danger Theory to detect currency crises using evolutionary algorithms inspired by biological immunology. Includes an academic paper, an interactive book, and an economic data analysis pipeline.
+\textit{Python, Pandas, Genetic Algorithms}
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt,parsep=0pt]
+  \item Immune-inspired genetic algorithm that predicts ``Black Wednesday'' (1992) one day in advance; also validated on the 1994 Mexican crisis.
+  \item Co-authored academic paper and interactive book, supervised by Dr. J. L. Sáez Lozano.
+\end{itemize}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.7.3)  15 OCT 2026 18:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.10.24)  27 OCT 2026 16:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,7 +403,8 @@ n input line 79.
 /enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/font
 awesome5/fa5free1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/fontawesome5/fa5br
 ands0.enc}{/usr/share/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands1.enc}{/
-usr/share/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free0.enc}] (./cv-en.aux)
+usr/share/texmf-dist/fonts/enc/dvips/fontawesome5/fa5free0.enc}{/usr/share/texm
+f-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./cv-en.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -412,11 +413,11 @@ Package rerunfilecheck Info: File `cv-en.out' has not changed.
 (rerunfilecheck)             Checksum: D81085979A97D5099E47FCE0CD9303B6;463.
  ) 
 Here is how much of TeX's memory you used:
- 14148 strings out of 467525
- 240419 string characters out of 5425862
- 663010 words of memory out of 5000000
- 42914 multiletter control sequences out of 15000+600000
- 638053 words of font info for 62 fonts, out of 8000000 for 9000
+ 14160 strings out of 467525
+ 240687 string characters out of 5425860
+ 665010 words of memory out of 5000000
+ 42924 multiletter control sequences out of 15000+600000
+ 638390 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,5n,79p,448b,454s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Brands-Reg
@@ -427,10 +428,10 @@ usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf
 e1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
 per/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pf
 b></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on cv-en.pdf (1 page, 158557 bytes).
+Output written on cv-en.pdf (1 page, 163990 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
+ 105 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
  7 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -57,7 +57,7 @@ Estudiante de quinto año del doble grado en Ingeniería Informática (Computaci
 
 % Skills
 \section{Habilidades Técnicas}
-\textbf{Lenguajes:} C++, C, Python, Java, JavaScript, Ruby, Bash \\
+\textbf{Lenguajes:} C++, C, Python, SQL, Java, JavaScript, Ruby, Bash \\
 \textbf{Frameworks:} Django, React, Vite \\
 \textbf{Infraestructura:} Docker, Ansible, Linux, Git, Oracle \\
 \textbf{Data Science:} Jupyter, Pandas, NumPy, Matplotlib
@@ -77,19 +77,28 @@ Especialidad en Computación y Sistemas Inteligentes
 \section{Proyectos}
 
 \textbf{Habla con tu dinero --- Asistente Financiero con IA} \hfill \href{https://github.com/0xjoseangel/reto-unicaja}{\faGithub\ GitHub} \\
-\textit{Python, FastAPI, LangGraph, React, Docker} \\
-Asistente financiero conversacional para el reto de la Cátedra Unicaja (UGR). Consultas en lenguaje natural con gráficos generados por el LLM y operaciones (Bizum, inversiones) que solo se ejecutan tras validación determinista y aprobación del usuario.
+\textit{Python, FastAPI, LangGraph, SQLAlchemy, React, Docker}
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt,parsep=0pt]
+  \item Chat financiero (reto Cátedra Unicaja, UGR): el LLM solo propone operaciones; se validan de forma determinista y no se ejecutan sin aprobación humana.
+  \item Sin SQL libre: 18 herramientas con consultas SQLAlchemy parametrizadas (sin inyección SQL por diseño); 56 tests.
+\end{itemize}
 
-\vspace{9pt}
+\vspace{6pt}
 
-\textbf{Casino Online} \hfill \href{https://github.com/0xjoseangel/Casino}{\faGithub\ GitHub} \\
-\textit{JavaScript, React, Django, Python, Oracle} \\
-Plataforma de casino online con arquitectura headless. Backend en Django con base de datos Oracle y frontend en React + Vite. Incluye gestión de usuarios, catálogo de juegos, sistema de transacciones, torneos y control de sesiones.
+\textbf{Selección de Carteras con Metaheurísticas} \hfill \href{https://github.com/0xjoseangel/portfolio}{\faGithub\ GitHub} \\
+\textit{C++17, OpenMP}
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt,parsep=0pt]
+  \item 14 metaheurísticas (ILS, enfriamiento simulado, genéticos, meméticos\ldots) sobre IBEX 35 y S\&P 500 (457 activos), validadas fuera de muestra.
+  \item El memético AM-Best gana en todos los índices; evaluación paralelizada con OpenMP.
+\end{itemize}
 
-\vspace{9pt}
+\vspace{6pt}
 
 \textbf{Danger Theory --- Detección de Crisis Financieras} \hfill \href{https://github.com/0xjoseangel/DANGER-THEORY-DT-}{\faGithub\ GitHub} \\
-\textit{Python, Jupyter, Data Science} \\
-Aplicación de la Teoría del Peligro para detectar crisis cambiarias mediante algoritmos evolutivos inspirados en inmunología biológica. Incluye paper académico, libro interactivo y pipeline de análisis de datos económicos.
+\textit{Python, Pandas, Algoritmos genéticos}
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt,parsep=0pt]
+  \item Algoritmo genético inmunológico que predice el «Miércoles Negro» (1992) con un día de antelación; validado también en la crisis mexicana de 1994.
+  \item Paper académico y libro interactivo en coautoría, supervisados por el Dr. J. L. Sáez Lozano.
+\end{itemize}
 
 \end{document}

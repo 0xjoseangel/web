@@ -20,7 +20,7 @@ export const content = {
     skills: [
       {
         category: "Lenguajes",
-        items: ["C++", "C", "Python", "Java", "JavaScript", "Ruby", "Bash"],
+        items: ["C++", "C", "Python", "SQL", "Java", "JavaScript", "Ruby", "Bash"],
       },
       {
         category: "Frameworks",
@@ -40,23 +40,40 @@ export const content = {
       {
         name: "Habla con tu dinero — Asistente Financiero con IA",
         description:
-          "Asistente financiero conversacional para el reto de la Cátedra Unicaja (UGR): consultas en lenguaje natural sobre tus movimientos con gráficos generados por el LLM, y operaciones (Bizum, inversiones) que el agente solo propone — un paso determinista valida fondos y límites y nada se ejecuta sin tu aprobación. Incluye dashboard proactivo nocturno, memoria de usuario y modo voz 100% local. 86,4% de precisión en consultas y respuesta completa en ~4,2 s (mediana).",
+          "Asistente financiero conversacional para el reto de la Cátedra Unicaja (UGR): preguntas en lenguaje natural sobre tus movimientos con gráficos generados por el LLM, y operaciones (Bizum, inversiones) que nunca se ejecutan sin tu aprobación.",
+        highlights: [
+          "Grafo de LangGraph que separa decidir de ejecutar: el LLM solo propone, un paso determinista valida fondos y límites, el grafo se pausa hasta tu aprobación y ejecuta en una única transacción idempotente.",
+          "Sin SQL libre: el agente elige entre 18 herramientas, cada una una consulta SQLAlchemy parametrizada, lo que elimina la inyección SQL por construcción.",
+          "86,4 % de aciertos en una evaluación sobre el pipeline real, contrastada con valores calculados por SQL directo; respuesta completa en ~4,2 s (mediana).",
+          "Dashboard proactivo nocturno, memoria de usuario (RAG), modo voz 100 % local y 56 tests con pytest.",
+        ],
         link: "https://github.com/0xjoseangel/reto-unicaja",
-        skills: ["Python", "FastAPI", "LangGraph", "React", "Docker"],
+        skills: ["Python", "FastAPI", "LangGraph", "SQLAlchemy", "React", "Docker"],
       },
       {
-        name: "Casino Online",
+        name: "Selección de Carteras con Metaheurísticas",
         description:
-          "Plataforma de casino online con arquitectura headless. Backend en Django con base de datos Oracle y frontend en React + Vite. Incluye gestión de usuarios, catálogo de juegos, sistema de transacciones, torneos y control de sesiones.",
-        link: "https://github.com/0xjoseangel/Casino",
-        skills: ["JavaScript", "React", "Django", "Python", "Oracle"],
+          "Implementación en C++17 y comparación experimental de 14 metaheurísticas (Greedy, búsqueda local, ILS, enfriamiento simulado, genéticos y meméticos) para construir carteras de inversión que maximizan rentabilidad frente a riesgo.",
+        highlights: [
+          "Evaluado sobre IBEX 35, S&P 100 y S&P 500 (hasta 457 activos): entrenamiento con datos 2015-2024 y validación fuera de muestra en 2025, con 50 semillas por algoritmo.",
+          "El memético AM-Best obtiene el mejor resultado en entrenamiento y en test en los tres índices.",
+          "Evaluación O(N²) paralelizada con OpenMP y compilación optimizada (hasta ~40× más rápida) y CI multiplataforma con GitHub Actions.",
+          "Estudios de sensibilidad de parámetros (α de BLX-α, temperatura y vecindario del enfriamiento simulado) documentados en tres memorias técnicas.",
+        ],
+        link: "https://github.com/0xjoseangel/portfolio",
+        skills: ["C++", "OpenMP", "Metaheurísticas", "Optimización"],
       },
       {
         name: "Danger Theory — Detección de Crisis Financieras",
         description:
-          "Aplicación de la Teoría del Peligro para detectar crisis cambiarias mediante algoritmos evolutivos inspirados en inmunología biológica. Incluye paper académico, libro interactivo y pipeline de análisis de datos económicos.",
+          "Investigación que aplica la Teoría del Peligro de la inmunología a la detección temprana de crisis cambiarias: un algoritmo genético evoluciona agentes que aprenden sus propias reglas a partir de señales de estrés del mercado.",
+        highlights: [
+          "El agente predice el «Miércoles Negro» (crisis de la libra, 1992) con un día de antelación, basándose casi solo en la intervención del Banco de Inglaterra y el desempleo, sin mirar el precio.",
+          "Validado con una prueba sintética («trampa de valor») y por transferencia a la crisis del peso mexicano (1994), donde recalibra su umbral, evita falsos positivos y predice el colapso.",
+          "Paper académico y libro interactivo publicado en GitHub Pages, en coautoría y bajo la supervisión del Dr. José Luis Sáez Lozano (UGR).",
+        ],
         link: "https://github.com/0xjoseangel/DANGER-THEORY-DT-",
-        skills: ["Python", "Jupyter", "Data Science"],
+        skills: ["Python", "Pandas", "Algoritmos genéticos", "Jupyter"],
       },
     ],
 
@@ -103,7 +120,7 @@ export const content = {
     skills: [
       {
         category: "Languages",
-        items: ["C++", "C", "Python", "Java", "JavaScript", "Ruby", "Bash"],
+        items: ["C++", "C", "Python", "SQL", "Java", "JavaScript", "Ruby", "Bash"],
       },
       {
         category: "Frameworks",
@@ -123,23 +140,40 @@ export const content = {
       {
         name: "Talk to Your Money — AI Financial Assistant",
         description:
-          "Conversational financial assistant built for the Cátedra Unicaja challenge (University of Granada): natural-language queries over your bank transactions with LLM-generated charts, and operations (Bizum transfers, investments) that the agent only proposes — a deterministic step checks funds and limits, and nothing runs without your explicit approval. Includes a nightly proactive dashboard, user memory, and a fully local voice mode. 86.4% accuracy on natural-language queries and ~4.2 s median full response time.",
+          "Conversational financial assistant built for the Cátedra Unicaja challenge (University of Granada): natural-language questions about your transactions with LLM-generated charts, and operations (Bizum transfers, investments) that never run without your approval.",
+        highlights: [
+          "LangGraph graph that separates deciding from executing: the LLM only proposes, a deterministic step checks funds and limits, the graph pauses until you approve, and execution happens in a single idempotent transaction.",
+          "No free-form SQL: the agent picks from 18 tools, each a parameterized SQLAlchemy query, which rules out SQL injection by design.",
+          "86.4% accuracy in an evaluation on the real pipeline, checked against values computed with direct SQL; ~4.2 s median full response time.",
+          "Nightly proactive dashboard, user memory (RAG), fully local voice mode, and 56 pytest tests.",
+        ],
         link: "https://github.com/0xjoseangel/reto-unicaja",
-        skills: ["Python", "FastAPI", "LangGraph", "React", "Docker"],
+        skills: ["Python", "FastAPI", "LangGraph", "SQLAlchemy", "React", "Docker"],
       },
       {
-        name: "Casino Online",
+        name: "Portfolio Selection with Metaheuristics",
         description:
-          "Online casino platform with a headless architecture. Django backend with an Oracle database and a React + Vite frontend. Includes user management, game catalog, transaction system, tournaments, and session control.",
-        link: "https://github.com/0xjoseangel/Casino",
-        skills: ["JavaScript", "React", "Django", "Python", "Oracle"],
+          "C++17 implementation and experimental comparison of 14 metaheuristics (Greedy, local search, ILS, simulated annealing, genetic and memetic algorithms) to build investment portfolios that maximize return against risk.",
+        highlights: [
+          "Evaluated on the IBEX 35, S&P 100, and S&P 500 (up to 457 assets): trained on 2015-2024 data with out-of-sample validation on 2025, 50 seeds per algorithm.",
+          "The memetic AM-Best algorithm achieves the best training and test results on all three indices.",
+          "O(N²) evaluation parallelized with OpenMP and optimized builds (up to ~40× faster), with multi-platform CI on GitHub Actions.",
+          "Parameter sensitivity studies (BLX-α's α, simulated annealing temperature and neighborhood) documented in three technical reports.",
+        ],
+        link: "https://github.com/0xjoseangel/portfolio",
+        skills: ["C++", "OpenMP", "Metaheuristics", "Optimization"],
       },
       {
         name: "Danger Theory — Financial Crisis Detection",
         description:
-          "Application of Danger Theory to detect currency crises using evolutionary algorithms inspired by biological immunology. Includes an academic paper, an interactive book, and an economic data analysis pipeline.",
+          "Research applying immunology's Danger Theory to early detection of currency crises: a genetic algorithm evolves agents that learn their own rules from market stress signals.",
+        highlights: [
+          "The agent predicts \"Black Wednesday\" (the 1992 sterling crisis) one day in advance, relying almost entirely on Bank of England intervention and unemployment, without looking at the price.",
+          "Validated with a synthetic \"value trap\" test and by transfer to the 1994 Mexican peso crisis, where it recalibrates its threshold, avoids false positives, and predicts the collapse.",
+          "Academic paper and interactive book published on GitHub Pages, co-authored and supervised by Dr. José Luis Sáez Lozano (University of Granada).",
+        ],
         link: "https://github.com/0xjoseangel/DANGER-THEORY-DT-",
-        skills: ["Python", "Jupyter", "Data Science"],
+        skills: ["Python", "Pandas", "Genetic Algorithms", "Jupyter"],
       },
     ],
 

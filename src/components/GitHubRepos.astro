@@ -131,6 +131,25 @@ if (hasGitHub) {
     return null;
   }
 
+  // README paths like "docs/img.png" are relative to the repo, not to this site
+  function resolveRelativeUrls(container: HTMLElement, owner: string, repo: string) {
+    const isRelative = (url: string | null): url is string =>
+      !!url && !/^([a-z][a-z0-9+.-]*:|\/\/|#)/i.test(url);
+    const clean = (url: string) => url.replace(/^\.?\//, '');
+    container.querySelectorAll('img').forEach((img) => {
+      const src = img.getAttribute('src');
+      if (isRelative(src)) img.src = `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/${clean(src)}`;
+    });
+    container.querySelectorAll('a').forEach((a) => {
+      const href = a.getAttribute('href');
+      if (isRelative(href)) a.href = `https://github.com/${owner}/${repo}/blob/HEAD/${clean(href)}`;
+      if (!href?.startsWith('#')) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+    });
+  }
+
   async function fetchReadme(repoUrl: string) {
     const info = extractGitHubInfo(repoUrl);
     if (!info) return null;
@@ -174,6 +193,7 @@ if (hasGitHub) {
         if (readme) {
           const { marked } = await import('marked');
           contentEl.innerHTML = await marked(readme);
+          if (info) resolveRelativeUrls(contentEl, info.owner, info.repo);
         } else {
           contentEl.innerHTML = `<p class="text-[var(--color-text-muted)] text-center py-12">${errorText}</p>`;
         }

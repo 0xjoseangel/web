@@ -59,6 +59,20 @@ const hasProjects = c.projects && c.projects.length > 0;
                             {project.description}
                           </p>
 
+                          {project.highlights && project.highlights.length > 0 && (
+                            <ul class="space-y-2">
+                              {project.highlights.map((highlight) => (
+                                <li class="flex gap-2.5 text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                                  <span
+                                    class="mt-[0.55rem] w-1.5 h-1.5 rounded-full flex-shrink-0"
+                                    style={`background-color: ${siteConfig.accentColor}`}
+                                  />
+                                  <span>{highlight}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+
                           {project.skills && project.skills.length > 0 && (
                             <div class="flex flex-wrap gap-2 pt-2">
                               {project.skills.map((skill) => (
@@ -148,6 +162,25 @@ const hasProjects = c.projects && c.projects.length > 0;
     return null;
   }
 
+  // README paths like "docs/img.png" are relative to the repo, not to this site
+  function resolveRelativeUrls(container: HTMLElement, owner: string, repo: string) {
+    const isRelative = (url: string | null): url is string =>
+      !!url && !/^([a-z][a-z0-9+.-]*:|\/\/|#)/i.test(url);
+    const clean = (url: string) => url.replace(/^\.?\//, '');
+    container.querySelectorAll('img').forEach((img) => {
+      const src = img.getAttribute('src');
+      if (isRelative(src)) img.src = `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/${clean(src)}`;
+    });
+    container.querySelectorAll('a').forEach((a) => {
+      const href = a.getAttribute('href');
+      if (isRelative(href)) a.href = `https://github.com/${owner}/${repo}/blob/HEAD/${clean(href)}`;
+      if (!href?.startsWith('#')) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+    });
+  }
+
   async function fetchReadme(repoUrl: string) {
     const info = extractGitHubInfo(repoUrl);
     if (!info) return null;
@@ -200,6 +233,7 @@ const hasProjects = c.projects && c.projects.length > 0;
         if (readme) {
           const { marked } = await import('marked');
           contentEl.innerHTML = await marked(readme);
+          if (info) resolveRelativeUrls(contentEl, info.owner, info.repo);
         } else {
           contentEl.innerHTML = `<p class="text-[var(--color-text-muted)] text-center py-12">${errorText}</p>`;
         }
