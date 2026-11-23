@@ -41,6 +41,9 @@ export const ui = {
     "education.title": "Educación",
     "certifications.title": "Certificaciones",
     "certifications.verify": "Verificar credencial",
+    "awards.title": "Premios",
+    "awards.link": "Ver proyecto",
+    "awards.certificate": "Ver certificado",
   },
   en: {
     "nav.about": "About",
@@ -80,6 +83,9 @@ export const ui = {
     "education.title": "Education",
     "certifications.title": "Certifications",
     "certifications.verify": "Verify credential",
+    "awards.title": "Awards",
+    "awards.link": "View project",
+    "awards.certificate": "View certificate",
   },
 } as const;
 

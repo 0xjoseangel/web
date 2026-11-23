@@ -100,6 +100,21 @@ export const content = {
         link: "https://credentials.britishcouncil.org/28379ba7-48f4-48de-9bec-4a27901aebc4?key=904660ccf4df4f33d680e802a8130aace31f119fae33bb6c3fc9628da4798365",
       },
     ],
+
+    awards: [
+      {
+        name: "1.er premio — IV Hackathon de Innovación Lactalis Puleva × UGR",
+        issuer: "Cátedra de Intraemprendimiento e Innovación Lactalis Puleva – UGR",
+        date: "Noviembre 2026",
+        details: [
+          "Premio a la solución más innovadora: Tempo by Puleva, una nueva gama de shots funcionales de 100 ml para mayores de 50, uno para cada momento del día",
+          "Plan de negocio en equipo de 4: hueco de mercado entre suplementos y lácteos funcionales, arquitectura de marca, precios con un ~51 % de margen bruto, distribución y plan de marketing",
+          "Business case a 3 años con EBITDA positivo en el tercero, presentado con una web interactiva y prototipos de los botes impresos en 3D",
+        ],
+        link: "https://0xjoseangel.github.io/tempo-puleva/",
+        certificate: "/certificado-hackathon-puleva.pdf",
+      },
+    ],
   },
 
   en: {
@@ -198,6 +213,21 @@ export const content = {
           "Listening C1 · Reading C1 (50/50) · Speaking B2 · Writing B2",
         ],
         link: "https://credentials.britishcouncil.org/28379ba7-48f4-48de-9bec-4a27901aebc4?key=904660ccf4df4f33d680e802a8130aace31f119fae33bb6c3fc9628da4798365",
+      },
+    ],
+
+    awards: [
+      {
+        name: "1st Prize — 4th Lactalis Puleva × UGR Innovation Hackathon",
+        issuer: "Lactalis Puleva – University of Granada Chair of Intrapreneurship and Innovation",
+        date: "November 2026",
+        details: [
+          "Most innovative solution award for Tempo by Puleva, a new range of 100 ml functional shots for people over 50, one for each moment of the day",
+          "Business plan as a team of 4: market gap between supplements and functional dairy, brand architecture, pricing with ~51% gross margin, distribution and marketing plan",
+          "3-year business case reaching positive EBITDA in year 3, pitched with an interactive website and 3D-printed bottle prototypes",
+        ],
+        link: "https://0xjoseangel.github.io/tempo-puleva/",
+        certificate: "/certificado-hackathon-puleva.pdf",
       },
     ],
   },

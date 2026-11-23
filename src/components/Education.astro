@@ -11,11 +11,15 @@ const { lang = "es" } = Astro.props;
 const t = useTranslations(lang);
 const c = content[lang];
 const hasEducation = c.education && c.education.length > 0;
-const hasCertifications = c.certifications && c.certifications.length > 0;
+// Certifications and awards share the same card layout
+const groups = [
+  { id: "certifications", title: t("certifications.title"), items: c.certifications, linkText: t("certifications.verify"), linkIcon: "verify" },
+  { id: "awards", title: t("awards.title"), items: c.awards, linkText: t("awards.link"), linkIcon: "external" },
+].filter((group) => group.items && group.items.length > 0);
 ---
 
 {
-  (hasEducation || hasCertifications) && (
+  (hasEducation || groups.length > 0) && (
     <section id="education" class="p-8 sm:p-12 md:p-16 lg:p-24 reveal">
       <div>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
@@ -63,13 +67,13 @@ const hasCertifications = c.certifications && c.certifications.length > 0;
               ))}
             </div>
 
-            {hasCertifications && (
-              <div id="certifications" class="mt-10 sm:mt-12">
+            {groups.map((group) => (
+              <div id={group.id} class="mt-10 sm:mt-12">
                 <h3 class="mb-4 font-['JetBrains_Mono'] text-base sm:text-lg text-[var(--color-text-primary)]">
-                  <span class="text-[var(--color-text-muted)]">$</span>{" "}<span class="text-[var(--color-accent)]">ls</span>{" "}{t("certifications.title").toLowerCase()}/
+                  <span class="text-[var(--color-text-muted)]">$</span>{" "}<span class="text-[var(--color-accent)]">ls</span>{" "}{group.title.toLowerCase()}/
                 </h3>
-                <div class={`grid grid-cols-1 gap-4 ${c.certifications.length > 1 ? "md:grid-cols-2" : ""}`}>
-                  {c.certifications.map((cert) => (
+                <div class={`grid grid-cols-1 gap-4 ${group.items.length > 1 ? "md:grid-cols-2" : ""}`}>
+                  {group.items.map((cert) => (
                     <div class="flex flex-col bg-[var(--color-bg-card)] rounded-xl border border-[var(--color-border)] p-4 sm:p-5 hover:border-[var(--color-accent)]/30 transition-all duration-300">
                       <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4 mb-3">
                         <div>
@@ -98,26 +102,56 @@ const hasCertifications = c.certifications && c.certifications.length > 0;
                         </ul>
                       )}
 
-                      {cert.link && (
-                        <a
-                          href={cert.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="self-start inline-flex items-center gap-2 mt-4 px-3 py-1.5 border border-[var(--color-border)] rounded-lg text-xs sm:text-sm font-semibold text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 font-['JetBrains_Mono']"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
-                            <path d="M9 12l2 2l4 -4" />
-                          </svg>
-                          {t("certifications.verify")}
-                        </a>
-                      )}
+                      <div class="flex flex-wrap gap-2 mt-auto pt-4">
+                        {cert.link && (
+                          <a
+                            href={cert.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-3 py-1.5 border border-[var(--color-border)] rounded-lg text-xs sm:text-sm font-semibold text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 font-['JetBrains_Mono']"
+                          >
+                            {group.linkIcon === "verify" ? (
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+                                <path d="M9 12l2 2l4 -4" />
+                              </svg>
+                            ) : (
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+                                <path d="M11 13l9 -9" />
+                                <path d="M15 4h5v5" />
+                              </svg>
+                            )}
+                            {group.linkText}
+                          </a>
+                        )}
+                        {"certificate" in cert && cert.certificate && (
+                          <a
+                            href={cert.certificate}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-3 py-1.5 border border-[var(--color-border)] rounded-lg text-xs sm:text-sm font-semibold text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 font-['JetBrains_Mono']"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                              <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" />
+                              <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73" />
+                              <path d="M6 9l12 0" />
+                              <path d="M6 12l3 0" />
+                              <path d="M6 15l2 0" />
+                            </svg>
+                            {t("awards.certificate")}
+                          </a>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
-            )}
+            ))}
           </div>
         </div>
       </div>
